@@ -1,21 +1,22 @@
 require 'rails_helper'
 
-RSpec.describe "beers/edit", type: :view do
-  before(:each) do
-    @beer = assign(:beer, Beer.create!(
-      :name => "MyString",
-      :style => "MyString"
-    ))
-  end
+describe "The user can edit a beer" do
+  context "when they fill out a form and click edit." do
+    it "The beer actually gets changed." do
+      beer = Beer.create(name: "Velvet Merkin", style: "Barrel-Aged Imperial Stout")
+      new_beer_name = "Velvet Merkin 2016"
+      new_beer_style = "Tequila Barrel-Aged Imperial Oatmeal Stout"
 
-  it "renders the edit beer form" do
-    render
+      visit edit_beer_path(beer)
 
-    assert_select "form[action=?][method=?]", beer_path(@beer), "post" do
+      fill_in "beer[name]",	with: new_beer_name
+      fill_in "beer[style]",	with: new_beer_style
 
-      assert_select "input[name=?]", "beer[name]"
+      click_on "Update"
 
-      assert_select "input[name=?]", "beer[style]"
+      expect(current_path).to eq(beer_path(beer))
+      expect(page).to have_content(new_beer_name)
+      expect(page).to have_content(new_beer_style)
     end
   end
 end
