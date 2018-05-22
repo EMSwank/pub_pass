@@ -1,21 +1,21 @@
 require 'rails_helper'
 
-RSpec.describe "breweries/new", type: :view do
-  before(:each) do
-    assign(:brewery, Brewery.new(
-      :name => "MyString",
-      :location => "MyString"
-    ))
+describe "A user visits the page to create a brewery", type: :view do
+
+  it "and sees a form." do
+    visit new_brewery_path
+
+    expect(page).to have_content("Name")
   end
 
-  it "renders new brewery form" do
-    render
+  it "and it creates it." do
+    visit new_brewery_path
 
-    assert_select "form[action=?][method=?]", breweries_path, "post" do
+    fill_in 'brewery[name]', with: "Comrade Brewing Company"
+    fill_in 'brewery[location]', with: "Denver, CO"
+    click_on "Create Brewery"
 
-      assert_select "input[name=?]", "brewery[name]"
-
-      assert_select "input[name=?]", "brewery[location]"
-    end
+    expect(page).to have_content("Comrade Brewing Company")
+    expect(current_path).to eq(breweries_path)
   end
 end
