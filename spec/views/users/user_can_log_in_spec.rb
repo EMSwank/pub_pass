@@ -24,7 +24,7 @@ describe "Vistor" do
       username = 'Humphrey'
       password = 'Bogart'
 
-      User.create(username: username, password: password)
+      user = User.create(username: username, password: password)
       
       visit '/'
 
@@ -34,10 +34,10 @@ describe "Vistor" do
 
       fill_in :username,	with: username
       fill_in :password,	with: password
-      click_on "Log in"
+      click_on "Let me in"
 
       expect(current_path).to eq(user_path(user))
-      expect(page).to have_link("Log in")
+      expect(page).to have_link("Log Out")
       end
   end
 end
