@@ -38,6 +38,16 @@ describe "Vistor" do
 
       expect(current_path).to eq(user_path(user))
       expect(page).to have_link("Log Out")
-      end
+    
+    end
+
+    it "should be able to log out." do
+      username = 'Humphrey'
+      password = 'Bogart'
+
+      user = User.create(username: username, password: password)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    end
   end
 end
