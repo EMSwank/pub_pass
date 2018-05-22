@@ -20,7 +20,7 @@ describe "Vistor" do
   
 
   context "logs in." do
-    xit "should log in the user" do
+    it "should log in the user" do
       username = 'Humphrey'
       password = 'Bogart'
 
