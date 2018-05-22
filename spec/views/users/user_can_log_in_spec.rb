@@ -7,7 +7,7 @@ describe "Vistor" do
 
     click_on 'Sign Up!'
 
-    expect(current_path).to eq(new_user_path)
+    expect(current_path).to eq(users_new_path)
     
     fill_in "user[username]",	with: "Guzzler"
     fill_in "user[password]",	with: "password"
