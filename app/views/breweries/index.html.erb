@@ -2,11 +2,17 @@
 
 <h1>Breweries</h1>
 
-<table>
+<% if @current_user && current_user.admin? %>
+<div>
+  <%= link_to 'Create New Brewery', new_admin_brewery_path, class: "btn btn-outline-dark" %>
+</div>
+<% end %>
+
+<table class="table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Location</th>
+      <th scope="col">Name</th>
+      <th scope="col">Location</th>
       <th colspan="3"></th>
     </tr>
   </thead>
