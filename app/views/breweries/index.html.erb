@@ -1,10 +1,8 @@
 <h1>Breweries</h1>
 
-<% if @current_user && @current_user.admin? %>
 <div>
   <%= link_to 'Create New Brewery', new_admin_brewery_path, class: "btn btn-outline-dark" %>
 </div>
-<% end %>
 
 <table class="table">
   <thead>
@@ -20,7 +18,7 @@
       <tr>
         <td><%= brewery.name %></td>
         <td><%= brewery.location %></td>
-        <td><%= link_to 'Show', brewery %></td>
+        <td><%= link_to 'Show', brewery, class: "btn btn-outline-dark" %></td>
       </tr>
     <% end %>
   </tbody>

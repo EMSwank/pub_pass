@@ -7,7 +7,6 @@ describe "The user can edit a beer" do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
       brewery = Brewery.create!(name: 'Moes Tavern', location: 'Springfield')
-      # require 'pry';binding.pry
       beer = Beer.create!(name: "Velvet Merkin", style: "Barrel-Aged Imperial Stout", brewery_id: brewery.id)
 
       new_beer_name = "Velvet Merkin 2016"

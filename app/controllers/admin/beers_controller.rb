@@ -14,10 +14,9 @@ class Admin::BeersController < Admin::BaseController
 
   def create
     @beer = Beer.new(beer_params)
-
     respond_to do |format|
       if @beer.save
-        format.html { redirect_to beers_path, notice: 'Beer was successfully created.' }
+        format.html { redirect_to beer_path(@beer), notice: 'Beer was successfully created.' }
         format.json { render :show, status: :created, location: @beer }
       else
         format.html { render :new }
