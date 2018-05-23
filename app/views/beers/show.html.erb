@@ -9,6 +9,9 @@
 <p>
   <%= @beer.style %>
 </p>
-
-<%= link_to 'Back', beers_path, class: "btn btn-outline-dark" %>
 </div>
+
+<% if current_user && current_user.admin? %>
+  <%= link_to 'Edit', edit_admin_brewery_path(@beer) %>
+<% end %>
+<%= link_to 'Back', beers_path, class: "btn btn-outline-dark" %>

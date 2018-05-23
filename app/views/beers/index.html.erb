@@ -17,6 +17,10 @@
         <td><%= beer.name %></td>
         <td><%= beer.style %></td>
         <td><%= link_to 'Show', beer %></td>
+      <% if current_user && current_user.admin? %>
+        <td><%= link_to 'Edit', edit_admin_beer_path(beer) %></td>
+        <td><%= link_to 'Delete', beer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
       </tr>
     <% end %>
   </tbody>
