@@ -9,6 +9,10 @@
 <p>
   <%= @beer.style %>
 </p>
+  <h5>Brewery</h5>
+<p>
+  <%= @beer.brewery.name %>
+</p>
 </div>
 
 <% if @current_user && @current_user.admin? %>

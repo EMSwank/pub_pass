@@ -1,8 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Breweries</h1>
 
-<% if @current_user && current_user.admin? %>
+<% if @current_user && @current_user.admin? %>
 <div>
   <%= link_to 'Create New Brewery', new_admin_brewery_path, class: "btn btn-outline-dark" %>
 </div>

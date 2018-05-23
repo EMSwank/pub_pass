@@ -5,11 +5,13 @@ RSpec.describe "beers/index", type: :view do
     assign(:beers, [
       Beer.create!(
         :name => "Name",
-        :style => "Style"
+        :style => "Style",
+        :brewery => "Brewery"
       ),
       Beer.create!(
         :name => "Name",
-        :style => "Style"
+        :style => "Style",
+        :brewery => "Brewery"
       )
     ])
   end
