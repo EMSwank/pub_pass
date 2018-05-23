@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_23_201951) do
+ActiveRecord::Schema.define(version: 2018_05_23_202347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "beer_comments", force: :cascade do |t|
+    t.bigint "comment_id"
+    t.bigint "beer_id"
+    t.index ["beer_id"], name: "index_beer_comments_on_beer_id"
+    t.index ["comment_id"], name: "index_beer_comments_on_comment_id"
+  end
 
   create_table "beers", force: :cascade do |t|
     t.string "name"
@@ -48,6 +55,8 @@ ActiveRecord::Schema.define(version: 2018_05_23_201951) do
     t.index ["comment_id"], name: "index_users_on_comment_id"
   end
 
+  add_foreign_key "beer_comments", "beers"
+  add_foreign_key "beer_comments", "comments"
   add_foreign_key "comments", "users"
   add_foreign_key "users", "comments"
 end
