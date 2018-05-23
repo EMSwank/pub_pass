@@ -7,7 +7,7 @@ describe "The user can edit a beer" do
       new_beer_name = "Velvet Merkin 2016"
       new_beer_style = "Tequila Barrel-Aged Imperial Oatmeal Stout"
 
-      visit edit_beer_path(beer)
+      visit edit_admin_beer_path(beer)
 
       fill_in "beer[name]",	with: new_beer_name
       fill_in "beer[style]",	with: new_beer_style

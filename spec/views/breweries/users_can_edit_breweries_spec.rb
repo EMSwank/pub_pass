@@ -7,7 +7,7 @@ describe "The user can edit a brewery" do
       new_brewery_name = "Bell's Brewery"
       new_brewery_location = "Galesburg, MI"
 
-      visit edit_brewery_path(brewery)
+      visit edit_admin_brewery_path(brewery)
 
       fill_in "brewery[name]",	with: new_brewery_name
       fill_in "brewery[location]",	with: new_brewery_location

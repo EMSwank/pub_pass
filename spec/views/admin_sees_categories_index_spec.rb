@@ -10,6 +10,31 @@ describe "User visits categories index page" do
       visit admin_categories_path
       expect(page).to have_content("Admin Categories")
     end
+
+    it "and sees a form." do
+      admin = User.create(username: "Optimus Prime", password: "Steak", role: 1)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit new_admin_beer_path
+
+      expect(page).to have_content("Name")
+    end
+
+    it "and it creates it." do
+      admin = User.create(username: "Optimus Prime", password: "Steak", role: 1)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit new_admin_beer_path
+      fill_in 'beer[name]', with: "Super 77"
+      fill_in 'beer[style]', with: "Wheat Ale"
+      click_on "Create Beer"
+
+      expect(page).to have_content("Super 77")
+      expect(current_path).to eq(beers_path)
+    end
+
   end
 
   context "as a default user" do
@@ -22,7 +47,6 @@ describe "User visits categories index page" do
       expect(page).to_not have_content("Admin Categories")
       expect(page).to have_content("The page you were looking for doesn't exist.")
     end
-    
   end
   
 end
