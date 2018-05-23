@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :beers
   validates :username, uniqueness: true, presence: true
   validates_presence_of :password, require: true
 

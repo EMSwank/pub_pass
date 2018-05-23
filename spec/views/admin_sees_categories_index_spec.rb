@@ -11,7 +11,7 @@ describe "User visits categories index page" do
       expect(page).to have_content("Admin Categories")
     end
 
-    it "and sees a form." do
+    it "and sees a button to create a new beer." do
       admin = User.create(username: "Optimus Prime", password: "Steak", role: 1)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
@@ -21,7 +21,7 @@ describe "User visits categories index page" do
       expect(page).to have_content("Name")
     end
 
-    it "and it creates it." do
+    it "and it can create it." do
       admin = User.create(username: "Optimus Prime", password: "Steak", role: 1)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
@@ -29,8 +29,8 @@ describe "User visits categories index page" do
       visit new_admin_beer_path
       fill_in 'beer[name]', with: "Super 77"
       fill_in 'beer[style]', with: "Wheat Ale"
+      save_and_open_page
       click_on "Create Beer"
-
       expect(page).to have_content("Super 77")
       expect(current_path).to eq(beers_path)
     end

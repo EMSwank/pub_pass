@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   get 'sessions/new'
   get 'sessions/create'
-  get 'users/new'
-  get 'user/new'
   root 'welcome#index'
   get 'welcome/index'
   get '/login', to: 'sessions#new'
@@ -11,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :breweries, only: [:index, :show]
   resources :beers, only: [:index, :show]
-  resources :users, only: [:show, :new]
+  resources :users, only: [:show, :new, :create]
   namespace :admin do
     resources :categories, only: [:index]
     resources :breweries
