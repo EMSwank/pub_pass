@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe User, type: :model do
   describe "Validations" do
-    it {should belong_to(:users)}
+    it {should belong_to(:user)}
   end
   
 end
