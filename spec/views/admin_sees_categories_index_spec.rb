@@ -27,6 +27,7 @@ describe "User visits categories index page" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
       visit new_admin_beer_path
+      
       fill_in 'beer[name]', with: "Super 77"
       fill_in 'beer[style]', with: "Wheat Ale"
 

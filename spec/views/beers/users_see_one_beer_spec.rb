@@ -6,7 +6,6 @@ RSpec.describe "beers/show", type: :view do
       :name => "Name",
       :style => "Style",
       :brewery => "Brewery"
-
     ))
   end
   
