@@ -1,0 +1,16 @@
+<%= form_for [:admin , @beer] do |form| %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :style %>
+    <%= form.text_field :style %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

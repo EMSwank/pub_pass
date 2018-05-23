@@ -1,11 +1,10 @@
-class BeersController < ApplicationController
+class Admin::BeersController < Admin::BaseController
 
   def index
     @beers = Beer.all
   end
 
   def show
-    @beer = Beer.find(params[:id])
   end
 
   def new
@@ -13,6 +12,7 @@ class BeersController < ApplicationController
   end
 
   def edit
+    @beer = Beer.find(params[:id])
   end
 
   def create
@@ -30,9 +30,10 @@ class BeersController < ApplicationController
   end
 
   def update
+    @beer = Beer.find(params[:id])
     respond_to do |format|
       if @beer.update(beer_params)
-        format.html { redirect_to @beer, notice: 'Beer was successfully updated.' }
+        format.html { redirect_to beer_path(@beer), notice: 'Beer was successfully updated.' }
         format.json { render :show, status: :ok, location: @beer }
       else
         format.html { render :edit }
@@ -50,7 +51,12 @@ class BeersController < ApplicationController
   end
 
   private
+    def set_beer
+      @beer = Beer.find(params[:id])
+    end
+
     def beer_params
       params.require(:beer).permit(:name, :style)
     end
+
 end

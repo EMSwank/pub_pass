@@ -7,8 +7,8 @@ describe "Vistor" do
 
     click_on 'Sign Up!'
 
-    expect(current_path).to eq(users_new_path)
-    
+    expect(current_path).to eq(new_user_path)
+
     fill_in "user[username]",	with: "Guzzler"
     fill_in "user[password]",	with: "password"
 
@@ -17,7 +17,7 @@ describe "Vistor" do
     expect(page).to have_content("Welcome, Guzzler!") 
     end
   end
-  
+
 
   context "logs in." do
     it "should log in the user" do
