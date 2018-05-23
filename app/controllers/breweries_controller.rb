@@ -5,19 +5,10 @@ class BreweriesController < ApplicationController
   end
 
   def show
+    @brewery = Brewery.find(params[:id])
   end
 
   def new
     @brewery = Brewery.new
   end
-
-  def edit
-  end
-
-
-  private
-
-    def brewery_params
-      params.require(:brewery).permit(:name, :location)
-    end
 end

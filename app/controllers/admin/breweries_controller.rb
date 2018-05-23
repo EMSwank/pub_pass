@@ -12,6 +12,7 @@ class Admin::BreweriesController < Admin::BaseController
   end
 
   def edit
+    @brewery = Brewery.find(params[:id])
   end
 
   def create
@@ -29,6 +30,7 @@ class Admin::BreweriesController < Admin::BaseController
   end
 
   def update
+    @brewery = Brewery.find(params[:id])
     respond_to do |format|
       if @brewery.update(brewery_params)
         format.html { redirect_to @brewery, notice: 'Brewery was successfully updated.' }

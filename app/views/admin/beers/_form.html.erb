@@ -1,5 +1,4 @@
-<%= form_with(model: beer, local: true) do |form| %>
-  
+<%= form_for [:admin , @beer] do |form| %>
 
   <div class="field">
     <%= form.label :name %>

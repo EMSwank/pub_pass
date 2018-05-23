@@ -12,6 +12,7 @@ class Admin::BeersController < Admin::BaseController
   end
 
   def edit
+    @beer = Beer.find(params[:id])
   end
 
   def create
@@ -29,9 +30,10 @@ class Admin::BeersController < Admin::BaseController
   end
 
   def update
+    @beer = Beer.find(params[:id])
     respond_to do |format|
       if @beer.update(beer_params)
-        format.html { redirect_to @beer, notice: 'Beer was successfully updated.' }
+        format.html { redirect_to beer_path(@beer), notice: 'Beer was successfully updated.' }
         format.json { render :show, status: :ok, location: @beer }
       else
         format.html { render :edit }

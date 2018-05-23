@@ -1,4 +1,4 @@
-require 'rails'
+require 'rails_helper'
 
 describe "User visits categories index page" do
   context "as an admin" do
@@ -29,7 +29,7 @@ describe "User visits categories index page" do
       visit new_admin_beer_path
       fill_in 'beer[name]', with: "Super 77"
       fill_in 'beer[style]', with: "Wheat Ale"
-      save_and_open_page
+
       click_on "Create Beer"
       expect(page).to have_content("Super 77")
       expect(current_path).to eq(beers_path)
