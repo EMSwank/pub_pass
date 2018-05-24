@@ -28,12 +28,30 @@ describe "they link from the user index" do
 
       click_link user.title
 
-      expect(page).to have_content(user.title)
+      expect(page).to have_content(user.username)
       expect(page).to have_content(user.body)
       expect(page).to have_content(comment_1.author_name)
       expect(page).to have_content(comment_1.body)
       expect(page).to have_content(comment_2.author_name)
       expect(page).to have_content(comment_2.body)
+    end
+  end
+
+  describe "they fill in a comment form" do
+    it "displays the comment on the user show" do
+      user = User.create(username: "New Title", body: "New Body")
+      beer = Beer.create(name: "Foo", style: "Baztastic")
+      
+      visit beer_path(beer)
+
+      fill_in "comment[user.name]", with: "ME!"
+      fill_in "comment[body]", with: "So many thoughts on this user."
+      click_on "Submit"
+
+      expect(current_path).to eq(user_path(user))
+      expect(page).to have_content("Post a Comment")
+      expect(page).to have_content("ME!")
+      expect(page).to have_content("So many thoughts on this user.")
     end
   end
 end
