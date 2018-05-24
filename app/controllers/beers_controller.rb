@@ -12,6 +12,7 @@ class BeersController < ApplicationController
     @beer = Beer.new
   end
 
+
   def create
     @beer = Beer.new(beer_params)
 

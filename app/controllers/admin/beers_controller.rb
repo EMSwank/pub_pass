@@ -6,7 +6,7 @@ class Admin::BeersController < Admin::BaseController
 
   def new
     @beer = Beer.new
-    @breweries = Brewery.all
+    @breweries = Brewery.all.map { |brewery| [brewery.name, brewery.id] }
   end
 
   def edit
@@ -15,8 +15,9 @@ class Admin::BeersController < Admin::BaseController
   end
 
   def create
-    @breweries = Brewery.all
     @beer = Beer.new(beer_params)
+    @breweries = Brewery.all.map { |brewery| [brewery.name, brewery.id] }
+    @beer.brewery_id = params[:brewery_id]
     respond_to do |format|
       if @beer.save
         format.html { redirect_to beer_path, notice: 'Beer was successfully created.' }
@@ -51,12 +52,9 @@ class Admin::BeersController < Admin::BaseController
   end
 
   private
-    def set_beer
-      @beer = Beer.find(params[:id])
-    end
 
     def beer_params
-      params.require(:beer).permit(:name, :style)
+      params.require(:beer).permit(:name, :style, :brewery_id)
     end
 
 end

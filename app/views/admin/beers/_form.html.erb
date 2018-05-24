@@ -9,13 +9,11 @@
     <%= form.text_field :style %>
   </div>
 
-  <select >
-    <%= @breweries.each do |brewery| %>
-    <option value='<%= brewery.id %>'><%= brewery.name %></option>
-    <% end %>
-  </select>
+  <div>
+    <%= form.select(:brewery_id, @breweries) %>
+  </div>
 
-  <div class="actions">
+  <div class="btn">
     <%= form.submit %>
   </div>
 <% end %>
