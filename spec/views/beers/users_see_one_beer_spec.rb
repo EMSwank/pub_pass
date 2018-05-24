@@ -39,7 +39,7 @@ describe "they link from the user index" do
 
   describe "they fill in a comment form" do
     it "displays the comment on the user show" do
-      user = User.create(username: "New Title", body: "New Body")
+      comment = Comment.create(username: "New Title", body: "New Body")
       beer = Beer.create(name: "Foo", style: "Baztastic")
       
       visit beer_path(beer)

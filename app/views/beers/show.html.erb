@@ -25,6 +25,12 @@
 
 <h3>Comments</h3>
 
-<%= render partial: 'beers/comment', collection: @beer.comments.reverse %>
+<% @beer.comments.each do |comment| %>
+ binding.pry
+  <div class="well">
+  <p><strong><%= comment.username %></strong>: <%=comment.body %></p>
+  </div>
+<% end %>
+<%# <%= render partial: 'beers/comment', collection: @beer.comments.reverse %> %>
 
 
