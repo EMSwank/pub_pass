@@ -18,8 +18,13 @@
   <%= link_to 'Edit', edit_admin_brewery_path(@beer), class: "btn btn-outline-success" %>
   <%end%>
 <%= link_to 'Back', beers_path, class: "btn btn-outline-dark" %>
+ <br>
+
+<%= render partial: 'comments/form' %>
+<br>
 
 <h3>Comments</h3>
 
 <%= render partial: 'beers/comment', collection: @beer.comments.reverse %>
+
 

@@ -6,6 +6,8 @@ class BeersController < ApplicationController
 
   def show
     @beer = Beer.find(params[:id])
+    @comment = Comment.new
+    @comment.beer_id = @beer.id
   end
 
   def new
