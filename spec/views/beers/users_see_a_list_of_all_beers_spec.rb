@@ -2,14 +2,17 @@ require 'rails_helper'
 
 RSpec.describe "beers/index", type: :view do
   before(:each) do
+    brewery = Brewery.create(name: "Coors", location: "Golden")
     assign(:beers, [
       Beer.create!(
         :name => "Name",
-        :style => "Style"
+        :style => "Style",
+        :brewery => brewery
       ),
       Beer.create!(
         :name => "Name",
-        :style => "Style"
+        :style => "Style",
+        :brewery => brewery
       )
     ])
   end

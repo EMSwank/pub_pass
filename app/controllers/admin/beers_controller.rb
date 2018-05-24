@@ -4,23 +4,22 @@ class Admin::BeersController < Admin::BaseController
     @beers = Beer.all
   end
 
-  def show
-  end
-
   def new
     @beer = Beer.new
+    @breweries = Brewery.all
   end
 
   def edit
     @beer = Beer.find(params[:id])
+    @breweries = Brewery.all
   end
 
   def create
     @beer = Beer.new(beer_params)
-
+    @breweries = Brewery.all
     respond_to do |format|
       if @beer.save
-        format.html { redirect_to beers_path, notice: 'Beer was successfully created.' }
+        format.html { redirect_to admin_beers_path, notice: 'Beer was successfully created.' }
         format.json { render :show, status: :created, location: @beer }
       else
         format.html { render :new }
@@ -31,6 +30,7 @@ class Admin::BeersController < Admin::BaseController
 
   def update
     @beer = Beer.find(params[:id])
+    @breweries = Brewery.all
     respond_to do |format|
       if @beer.update(beer_params)
         format.html { redirect_to beer_path(@beer), notice: 'Beer was successfully updated.' }
@@ -43,7 +43,8 @@ class Admin::BeersController < Admin::BaseController
   end
 
   def destroy
-    @beer.destroy
+    beer = Beer.find(params[:id])
+    beer.destroy
     respond_to do |format|
       format.html { redirect_to beers_url, notice: 'Beer was successfully deleted.' }
       format.json { head :no_content }
@@ -51,12 +52,9 @@ class Admin::BeersController < Admin::BaseController
   end
 
   private
-    def set_beer
-      @beer = Beer.find(params[:id])
-    end
 
     def beer_params
-      params.require(:beer).permit(:name, :style)
+      params.require(:beer).permit(:name, :style, :brewery_id)
     end
 
 end

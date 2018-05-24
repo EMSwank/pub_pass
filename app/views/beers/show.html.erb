@@ -9,6 +9,28 @@
 <p>
   <%= @beer.style %>
 </p>
-
-<%= link_to 'Back', beers_path, class: "btn btn-outline-dark" %>
+  <h5>Brewery</h5>
+<p>
+  <%= @beer.brewery.name %>
+</p>
 </div>
+  <% if current_user.admin? %>
+  <%= link_to 'Edit', edit_admin_brewery_path(@beer), class: "btn btn-outline-success" %>
+  <%end%>
+<%= link_to 'Back', beers_path, class: "btn btn-outline-dark" %>
+ <br>
+
+<%= render partial: 'comments/form' %>
+<br>
+
+<h3>Comments</h3>
+
+<% @beer.comments.each do |comment| %>
+ binding.pry
+  <div class="well">
+  <p><strong><%= comment.username %></strong>: <%=comment.body %></p>
+  </div>
+<% end %>
+<%# <%= render partial: 'beers/comment', collection: @beer.comments.reverse %> %>
+
+

@@ -4,3 +4,22 @@
 
 <%= link_to 'Show', @brewery %> |
 <%= link_to 'Back', admin_breweries_path %>
+<div class="col-md-4 order-md-2 mb-4">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Brewery ID</th>
+      <th scope="col">Name</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @breweries.each do |brewery| %>
+      <tr>
+        <td><%= brewery.id %></td>
+        <td><%= brewery.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

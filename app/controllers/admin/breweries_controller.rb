@@ -4,15 +4,13 @@ class Admin::BreweriesController < Admin::BaseController
     @breweries = Brewery.all
   end
 
-  def show
-  end
-
   def new
     @brewery = Brewery.new
   end
 
   def edit
     @brewery = Brewery.find(params[:id])
+    @breweries = Brewery.all
   end
 
   def create
@@ -43,7 +41,8 @@ class Admin::BreweriesController < Admin::BaseController
   end
 
   def destroy
-    @brewery.destroy
+    brewery = Brewery.find(params[:id])
+    brewery.destroy
     respond_to do |format|
       format.html { redirect_to breweries_url, notice: 'Brewery was successfully deleted.' }
       format.json { head :no_content }

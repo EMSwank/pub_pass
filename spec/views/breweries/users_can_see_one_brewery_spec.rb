@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "breweries/show", type: :view do
+RSpec.describe "User visits the brewery show page", type: :view do
   before(:each) do
     @brewery = assign(:brewery, Brewery.create!(
       :name => "Name",

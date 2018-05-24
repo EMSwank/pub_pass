@@ -1,9 +1,19 @@
 <h1>Fill Me Out!</h1>
 
 <%= form_for @users do |f| %>
+<p>
   <%= f.label :username %>
-  <%= f.text_field :username %>
+  <%= f.text_field(:username, {:class => 'form control'}) %>
+</p>
+<p>
   <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.submit %>
+  <%= f.password_field(:password, {:class => 'form control'}) %>
+</p>
+<p>
+  <%= f.label :password_confirmation, "Confirmation" %>
+  <%= f.password_field(:password_confirmation, {:class => 'form control'}) %>
+</p>
+<p>
+  <%= f.submit({:class => 'btn btn-primary'}) %>
+</p>
 <% end %>

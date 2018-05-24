@@ -1,11 +1,17 @@
 <h1>Login</h1>
 
+<p class="form control">
 <%= form_tag login_path do %>
   <%= label_tag :username %>
   <%= text_field_tag :username %>
+</p>
 
+<p class="form control">
   <%= label_tag :password %>
-  <%= text_field_tag :password%>
+  <%= text_field_tag :password %>
+</p>
 
+<p class="btn btn-primary">
   <%= submit_tag "Let me in" %>
+</p>
 <% end %>

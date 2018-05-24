@@ -6,8 +6,8 @@ describe "The user can edit a beer" do
       admin = User.create(username: "Optimus Prime", password: "Steak", role: 1)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
-
-      beer = Beer.create(name: "Velvet Merkin", style: "Barrel-Aged Imperial Stout")
+      brewery = Brewery.create!(name: 'Moes Tavern', location: 'Springfield')
+      beer = Beer.create!(name: "Velvet Merkin", style: "Barrel-Aged Imperial Stout", brewery_id: brewery.id)
 
       new_beer_name = "Velvet Merkin 2016"
       new_beer_style = "Tequila Barrel-Aged Imperial Oatmeal Stout"
@@ -16,7 +16,6 @@ describe "The user can edit a beer" do
 
       fill_in "beer[name]",	with: new_beer_name
       fill_in "beer[style]",	with: new_beer_style
-
       click_on "Update"
 
       expect(current_path).to eq(beer_path(beer))

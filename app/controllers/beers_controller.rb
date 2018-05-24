@@ -6,14 +6,14 @@ class BeersController < ApplicationController
 
   def show
     @beer = Beer.find(params[:id])
+    @comment = Comment.new
+    @comment.beer_id = @beer.id
   end
 
   def new
     @beer = Beer.new
   end
 
-  def edit
-  end
 
   def create
     @beer = Beer.new(beer_params)
@@ -42,7 +42,8 @@ class BeersController < ApplicationController
   end
 
   def destroy
-    @beer.destroy
+    beer = @beer.find(params[:id])
+    beer.destroy
     respond_to do |format|
       format.html { redirect_to beers_url, notice: 'Beer was successfully deleted.' }
       format.json { head :no_content }
