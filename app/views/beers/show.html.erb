@@ -14,7 +14,7 @@
   <%= @beer.brewery.name %>
 </p>
 </div>
-  <% if current_user.admin? %>
+  <% if current_user && current_user.admin? %>
   <%= link_to 'Edit', edit_admin_brewery_path(@beer), class: "btn btn-outline-success" %>
   <%end%>
 <%= link_to 'Back', beers_path, class: "btn btn-outline-dark" %>
@@ -25,12 +25,9 @@
 
 <h3>Comments</h3>
 
-<% @beer.comments.each do |comment| %>
- binding.pry
-  <div class="well">
-  <p><strong><%= comment.username %></strong>: <%=comment.body %></p>
-  </div>
-<% end %>
-<%# <%= render partial: 'beers/comment', collection: @beer.comments.reverse %> %>
+<%# <%<%= render partial: 'beers/comment', collection: @beer.comments.reverse %>
 
 
+<% @beer.comments.each do |comment|%>
+  <p><%= comment.body %></p>
+<%end%>

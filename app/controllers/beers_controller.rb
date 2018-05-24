@@ -8,6 +8,7 @@ class BeersController < ApplicationController
     @beer = Beer.find(params[:id])
     @comment = Comment.new
     @comment.beer_id = @beer.id
+    binding.pry
   end
 
   def new
