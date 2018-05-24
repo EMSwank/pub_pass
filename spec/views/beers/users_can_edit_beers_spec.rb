@@ -16,7 +16,6 @@ describe "The user can edit a beer" do
 
       fill_in "beer[name]",	with: new_beer_name
       fill_in "beer[style]",	with: new_beer_style
-
       click_on "Update"
 
       expect(current_path).to eq(beer_path(beer))

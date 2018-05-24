@@ -4,9 +4,6 @@ class Admin::BreweriesController < Admin::BaseController
     @breweries = Brewery.all
   end
 
-  def show
-  end
-
   def new
     @brewery = Brewery.new
   end

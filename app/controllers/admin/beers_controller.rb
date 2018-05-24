@@ -6,13 +6,16 @@ class Admin::BeersController < Admin::BaseController
 
   def new
     @beer = Beer.new
+    @breweries = Brewery.all
   end
 
   def edit
     @beer = Beer.find(params[:id])
+    @breweries = Brewery.all
   end
 
   def create
+    @breweries = Brewery.all
     @beer = Beer.new(beer_params)
     respond_to do |format|
       if @beer.save
@@ -27,6 +30,7 @@ class Admin::BeersController < Admin::BaseController
 
   def update
     @beer = Beer.find(params[:id])
+    @breweries = Brewery.all
     respond_to do |format|
       if @beer.update(beer_params)
         format.html { redirect_to beer_path(@beer), notice: 'Beer was successfully updated.' }
