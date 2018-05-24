@@ -10,6 +10,10 @@
   <%= f.password_field(:password, {:class => 'form control'}) %>
 </p>
 <p>
+  <%= f.label :password_confirmation, "Confirmation" %>
+  <%= f.password_field(:password_confirmation, {:class => 'form control'}) %>
+</p>
+<p>
   <%= f.submit({:class => 'btn btn-primary'}) %>
 </p>
 <% end %>

@@ -23,13 +23,14 @@ describe "User visits categories index page" do
 
     it "and it can create it." do
       admin = User.create(username: "Optimus Prime", password: "Steak", role: 1)
-
+      brewery = Brewery.create(name: "Foo", location: "bar")
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
       visit new_admin_beer_path
 
       fill_in 'beer[name]', with: "Super 77"
       fill_in 'beer[style]', with: "Wheat Ale"
+      fill_in "beer[brewery_id]",	with: "1" 
 
       click_on "Create Beer"
       

@@ -40,7 +40,8 @@ class BeersController < ApplicationController
   end
 
   def destroy
-    @beer.destroy
+    beer = @beer.find(params[:id])
+    beer.destroy
     respond_to do |format|
       format.html { redirect_to beers_url, notice: 'Beer was successfully deleted.' }
       format.json { head :no_content }

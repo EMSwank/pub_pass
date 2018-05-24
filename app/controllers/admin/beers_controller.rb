@@ -6,7 +6,7 @@ class Admin::BeersController < Admin::BaseController
 
   def new
     @beer = Beer.new
-    @breweries = Brewery.all.map { |brewery| [brewery.name, brewery.id] }
+    @breweries = Brewery.all
   end
 
   def edit
@@ -16,11 +16,10 @@ class Admin::BeersController < Admin::BaseController
 
   def create
     @beer = Beer.new(beer_params)
-    @breweries = Brewery.all.map { |brewery| [brewery.name, brewery.id] }
-    @beer.brewery_id = params[:brewery_id]
+    @breweries = Brewery.all
     respond_to do |format|
       if @beer.save
-        format.html { redirect_to beer_path, notice: 'Beer was successfully created.' }
+        format.html { redirect_to admin_beers_path, notice: 'Beer was successfully created.' }
         format.json { render :show, status: :created, location: @beer }
       else
         format.html { render :new }
@@ -44,7 +43,8 @@ class Admin::BeersController < Admin::BaseController
   end
 
   def destroy
-    @beer.destroy
+    beer = Beer.find(params[:id])
+    beer.destroy
     respond_to do |format|
       format.html { redirect_to beers_url, notice: 'Beer was successfully deleted.' }
       format.json { head :no_content }
