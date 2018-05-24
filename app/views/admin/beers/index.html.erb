@@ -20,9 +20,9 @@
         <td><%= beer.name %></td>
         <td><%= beer.style %></td>
         <td><%= beer.brewery.name %></td>
-        <td><%= link_to 'Show', beer, class: "btn btn-outline-success" %></td>
+        <td><%= link_to 'Show', beer, class: "btn btn-outline-primary" %></td>
         <td><%= link_to 'Edit', edit_admin_beer_path(beer), class: "btn btn-outline-success" %></td>
-        <td><%= link_to 'Delete', admin_beer_path(beer), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-success" %></td>
+        <td><%= link_to 'Delete', admin_beer_path(beer), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %></td>
       </tr>
     <% end %>
   </tbody>

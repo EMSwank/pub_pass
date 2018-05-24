@@ -1,9 +1,9 @@
 <h1>Breweries</h1>
-
+<%if current_user.admin? %>
 <div>
   <%= link_to 'Create New Brewery', new_admin_brewery_path, class: "btn btn-outline-dark" %>
 </div>
-
+<%end%>
 <table class="table">
   <thead>
     <tr>
@@ -19,6 +19,10 @@
         <td><%= brewery.name %></td>
         <td><%= brewery.location %></td>
         <td><%= link_to 'Show', brewery, class: "btn btn-outline-dark" %></td>
+      <% if current_user.admin? %>
+        <td><%= link_to 'Edit', edit_admin_brewery_path(brewery), class: "btn btn-outline-dark" %></td>
+        <td><%= link_to 'Delete', admin_brewery_path(brewery), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %></td>
+      <% end %>
       </tr>
     <% end %>
   </tbody>

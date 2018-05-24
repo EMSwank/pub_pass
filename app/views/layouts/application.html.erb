@@ -13,9 +13,15 @@
 
 
   <body>
-
+<% if current_user %>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="beers/">PubPass</a>
+      <% if current_user.admin? %>
+        <a class="navbar-brand" href='/admin/categories'>PubPass</a>
+      <% elsif current_user %>
+        <a class="navbar-brand" href='/beers'>PubPass</a>
+      <% else %>
+        <a class="navbar-brand" href='/'>PubPass</a>
+      <%end%>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -40,7 +46,7 @@
         </ul>
       </div>
     </nav>
-
+<%end%>
   <div class="container">
     <%= yield %>
   </div>

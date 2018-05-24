@@ -10,5 +10,7 @@
   <%= @brewery.location %>
 </p>
 
+  <% if current_user.admin? %>
   <%= link_to 'Edit', edit_admin_brewery_path(@brewery), class: "btn btn-outline-dark" %>
+  <%end%>
 <%= link_to 'Back', breweries_path, class: "btn btn-outline-dark" %>
