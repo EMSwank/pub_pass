@@ -17,26 +17,9 @@ RSpec.describe "beers/show", type: :view do
     expect(rendered).to match(brewery)
 
   end
+end
 
 describe "they link from the user index" do
-    it "displays information for one user" do
-      user = User.create(username: "Foo", password: "Bar")
-      comment_1 = user.comments.create(body: "Commenty comments")
-      comment_2 = user.comments.create(body: "So much to say")
-
-      visit users_path
-
-      click_link user.title
-
-      expect(page).to have_content(user.username)
-      expect(page).to have_content(user.body)
-      expect(page).to have_content(comment_1.author_name)
-      expect(page).to have_content(comment_1.body)
-      expect(page).to have_content(comment_2.author_name)
-      expect(page).to have_content(comment_2.body)
-    end
-  end
-
   describe "they fill in a comment form" do
     it "displays the comment on the user show" do
       comment = Comment.create(username: "New Title", body: "New Body")
