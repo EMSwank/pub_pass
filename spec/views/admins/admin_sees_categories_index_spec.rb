@@ -6,7 +6,7 @@ describe "User visits categories index page" do
       admin = User.create(username: "Optimus Prime", password: "Steak", role: 1)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
-
+# binding.pry
       visit admin_categories_path
       expect(page).to have_content("Admin Categories")
     end
@@ -49,6 +49,6 @@ describe "User visits categories index page" do
       expect(page).to_not have_content("Admin Categories")
       expect(page).to have_content("The page you were looking for doesn't exist.")
     end
+
   end
-  
 end
