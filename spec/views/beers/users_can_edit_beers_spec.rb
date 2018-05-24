@@ -18,7 +18,7 @@ describe "The user can edit a beer" do
       fill_in "beer[style]",	with: new_beer_style
       click_on "Update"
 
-      expect(current_path).to eq(admin_beer_path(beer))
+      expect(current_path).to eq(beer_path(beer))
       expect(page).to have_content(new_beer_name)
       expect(page).to have_content(new_beer_style)
     end

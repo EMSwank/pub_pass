@@ -30,12 +30,12 @@ describe "User visits categories index page" do
 
       fill_in 'beer[name]', with: "Super 77"
       fill_in 'beer[style]', with: "Wheat Ale"
-      fill_in "beer[brewery_id]",	with: "1" 
+      fill_in "beer[brewery_id]",	with: brewery.id 
 
       click_on "Create Beer"
-      
+
       expect(page).to have_content("Super 77")
-      expect(current_path).to eq(beers_path)
+      expect(current_path).to eq(admin_beers_path)
     end
 
   end
